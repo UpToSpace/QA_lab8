@@ -11,10 +11,13 @@ import java.util.*;
 // 4-Jan-2019
 
 public class Airport {
+    
     private List<? extends Plane> planes;
-
-
-
+    
+    public Airport(List<? extends Plane> planes) {
+        this.planes = planes;
+    }
+    
     public List<PassengerPlane> getPasPl() {
         List<? extends Plane> l = this.planes;
         List<PassengerPlane> x = new ArrayList<>();
@@ -27,11 +30,11 @@ public class Airport {
         for (Plane plane : planes) {
             if (plane instanceof MilitaryPlane) {
                 militaryPlanes.add((MilitaryPlane) plane);
-            } //if
+            }
             else {
 
-            } // else
-        } //for
+            }
+        }
         return militaryPlanes;
     }
 
@@ -43,12 +46,6 @@ public class Airport {
                 planeWithMaxCapacity = passengerPlanes.get(i);
             }
         }
-
-
-
-
-
-
         return planeWithMaxCapacity;
     }
 
@@ -96,11 +93,6 @@ public class Airport {
         return this;
     }
 
-
-    /**
-     * Sorts by max speed
-     * @return Airport
-     */
     public Airport sortByMaxSpeed() {
         Collections.sort(planes, new Comparator<Plane>() {
             public int compare(Plane o1, Plane o2) {
@@ -136,11 +128,6 @@ public class Airport {
         return "Airport{" +
                 "Planes=" + planes.toString() +
                 '}';
-    }
-
-    //Constructor
-    public Airport(List<? extends Plane> planes) {
-        this.planes = planes;
     }
 
 }
