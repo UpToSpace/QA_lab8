@@ -1,8 +1,8 @@
-import Planes.experimentalPlane;
+import planes.ExperimentalPlane;
 import models.MilitaryType;
-import Planes.MilitaryPlane;
-import Planes.PassengerPlane;
-import Planes.Plane;
+import planes.MilitaryPlane;
+import planes.PassengerPlane;
+import planes.Plane;
 
 import java.util.*;
 
@@ -18,7 +18,7 @@ public class Airport {
         this.planes = planes;
     }
     
-    public List<PassengerPlane> getPasPl() {
+    public List<PassengerPlane> getPassengerPlanes() {
         List<? extends Plane> l = this.planes;
         List<PassengerPlane> x = new ArrayList<>();
         for (Plane p : l) {if (p instanceof PassengerPlane) {x.add((PassengerPlane) p);}}
@@ -39,7 +39,7 @@ public class Airport {
     }
 
     public PassengerPlane getPassengerPlaneWithMaxPassengersCapacity() {
-        List<PassengerPlane> passengerPlanes = getPasPl();
+        List<PassengerPlane> passengerPlanes = getPassengerPlanes();
         PassengerPlane planeWithMaxCapacity = passengerPlanes.get(0);
         for (int i = 0; i < passengerPlanes.size(); i++) {
             if (passengerPlanes.get(i).getPassengersCapacity() > planeWithMaxCapacity.getPassengersCapacity()) {
@@ -74,17 +74,17 @@ public class Airport {
 
     }
 
-    public List<experimentalPlane> getExperimentalPlanes() {
-        List<experimentalPlane> experimentalPlanes = new ArrayList<>();
+    public List<ExperimentalPlane> getExperimentalPlanes() {
+        List<ExperimentalPlane> ExperimentalPlanes = new ArrayList<>();
         for (Plane plane : planes) {
-            if (plane instanceof experimentalPlane) {
-                experimentalPlanes.add((experimentalPlane) plane);
+            if (plane instanceof ExperimentalPlane) {
+                ExperimentalPlanes.add((ExperimentalPlane) plane);
             }
         }
-        return experimentalPlanes;
+        return ExperimentalPlanes;
     }
 
-    public Airport sortByMaxDistance() {
+    public Airport sortByMaxFlightDistance() {
         Collections.sort(planes, new Comparator<Plane>() {
             public int compare(Plane o1, Plane o2) {
                 return o1.Get_Max_Flight_Distance() - o2.Get_Max_Flight_Distance();
@@ -126,7 +126,7 @@ public class Airport {
     @Override
     public String toString() {
         return "Airport{" +
-                "Planes=" + planes.toString() +
+                "planes=" + planes.toString() +
                 '}';
     }
 
